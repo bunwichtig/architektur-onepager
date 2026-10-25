@@ -9,7 +9,7 @@ window.SITE = {
   // true = Demo-Modus: Anfragen und hochgeladene Projekte bleiben nur im Browser.
   demo: true,
 
-  name: 'Henrike Scholze',
+  name: 'Vorname Nachname',
   business: { de: 'Bauplanung', en: 'Building Design' },
   // Spätere eigene Domain hier eintragen, z. B. https://www.henrike-scholze.de/
   siteUrl: 'https://bunwichtig.github.io/architektur-onepager/',

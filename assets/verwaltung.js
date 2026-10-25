@@ -147,7 +147,7 @@
 
   // ---------- Einrichtung ----------
   // [Pfad in SITE, Bezeichnung, Hinweis, Prüfung ob noch Platzhalter]
-  function placeholder(v) { return !v || /example|\[|0000/.test(v); }
+  function placeholder(v) { return !v || /example|\[|0000|Vorname|Nachname/.test(v); }
   var SETUP = [
     ['Allgemein', [
       ['name', 'Name', ''],
@@ -178,7 +178,7 @@
     ['Redaktionssystem (admin/)', [
       ['cms.repo', 'GitHub-Repository', 'besitzer/repository', function () { return false; }],
       ['cms.branch', 'Branch', 'Meist „main“', function () { return false; }],
-      ['cms.authUrl', 'Adresse des Anmeldedienstes (OAuth)', 'Nötig, damit sich Frau Scholze im Redaktionssystem mit GitHub anmelden kann. Anleitung im README.']
+      ['cms.authUrl', 'Adresse des Anmeldedienstes (OAuth)', 'Nötig, damit sich die Inhaberin im Redaktionssystem mit GitHub anmelden kann. Anleitung im README.']
     ]]
   ];
 

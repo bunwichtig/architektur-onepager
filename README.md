@@ -1,6 +1,6 @@
-# Henrike Scholze · Bauplanung (Website)
+# Bauplanung Wismar – Website-Vorlage
 
-Mehrseitige Website für Henrike Scholze, Bauplanung in Wismar: Sanierung, Neubau, Landschaftsgestaltung für Privatleute. Deutsch und Englisch umschaltbar, sieben Designvarianten, Projekte zum Hochladen. **Derzeit Demo mit Testdaten.**
+Mehrseitige Website-Vorlage für ein Planungsbüro in Wismar (alle Namen und Daten sind Platzhalter): Sanierung, Neubau, Landschaftsgestaltung für Privatleute. Deutsch und Englisch umschaltbar, sieben Designvarianten, Projekte zum Hochladen. **Derzeit Demo mit Testdaten.**
 
 Reines HTML, CSS und JavaScript ohne Build-Schritt. Es werden keine Schriften oder Skripte von fremden Servern geladen. Ausnahmen: Google Maps, das erst nach Klick lädt, und das Redaktionssystem unter `admin/`.
 
@@ -45,7 +45,7 @@ Danach <http://localhost:8000> öffnen.
 2. **Redaktionssystem (für die echte Seite):** `admin/` mit Anmeldung über GitHub. Neue Projekte und Bilder werden direkt ins Repository gespeichert und sind danach für alle sichtbar.
    - Lokal testen ohne Anmeldung: in einem zweiten Terminal `npx decap-server` starten, dann <http://localhost:8000/admin/> öffnen.
    - Online braucht GitHub einen kleinen Anmeldedienst (OAuth), da GitHub Pages keinen eigenen Server hat. Kostenlos geht das zum Beispiel mit einem Cloudflare Worker (Vorlage: „decap-proxy“) oder über Netlify als Host. Die Adresse kommt in `config.js` unter `cms.authUrl`.
-   - Frau Scholze braucht ein GitHub-Konto mit Schreibrecht auf das Repository.
+   - Die Inhaberin braucht ein GitHub-Konto mit Schreibrecht auf das Repository.
 
 ## Kontaktformular
 
@@ -70,7 +70,7 @@ Danach <http://localhost:8000> öffnen.
 ## Vor der Veröffentlichung
 
 1. Echte Daten in `config.js` (Straße, Telefon, E-Mail, USt-IdNr.), `demo: false` setzen.
-2. Testprojekte in `content/projects.json` durch echte ersetzen. Die Beispielfotos zeigen keine Projekte von Frau Scholze: löschen und dazu die Einträge in `content/credits.json` entfernen.
+2. Testprojekte in `content/projects.json` durch echte ersetzen. Die Beispielfotos zeigen keine Projekte von die Inhaberin: löschen und dazu die Einträge in `content/credits.json` entfernen.
 3. Impressum und Datenschutz prüfen lassen, Platzhalter in eckigen Klammern ersetzen.
 4. In allen HTML-Dateien die Zeile `<meta name="robots" content="noindex, nofollow">` unter dem Kommentar „DEMO“ entfernen, damit Google die Seite aufnimmt.
 5. Hinweis zur Berufsbezeichnung: „Architektin“ ist geschützt und wird nicht verwendet. Bauanträge brauchen je nach Vorhaben eine bauvorlageberechtigte Person.
