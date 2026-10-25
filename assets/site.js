@@ -8,21 +8,38 @@
   var root = document.documentElement;
   var params = new URLSearchParams(location.search);
   var inFrame = window.self !== window.top;
-  // Alle Designvarianten. Neues Design: hier eintragen und in site.css
-  // einen Block html[data-design="…"] mit den Farben anlegen.
+  // Alle Designvarianten. Neues Design: hier eintragen und in site.css einen
+  // Block html[data-design="…"] anlegen. hero und projects wählen die Anordnung
+  // (siehe Abschnitt „Anordnungen“ in site.css).
   var VARIANTS = [
-    { id: 'hell', de: ['Hell & reduziert', 'Viel Weißraum, schlanke Schrift, Projekte als ruhige Liste. Zeitlos und sachlich.'],
-      en: ['Light & minimal', 'Lots of white space, light type, projects as a calm list. Timeless and factual.'],
-      colors: ['#ffffff', '#141414', '#9a9a9a', '#e6e6e6'] },
-    { id: 'natur', de: ['Warm & natürlich', 'Sand- und Olivtöne, Serifenschrift, runde Formen. Betont Garten und Landschaft. Meine Empfehlung.'],
-      en: ['Warm & natural', 'Sand and olive tones, serif type, rounded shapes. Emphasises gardens and landscape. My recommendation.'],
+    { id: 'galerie', hero: 'stack', projects: 'index',
+      de: ['Galerie', 'Wie die Websites von Kunsthallen: riesige Serifenschrift, viel Weiß, nummerierte Abschnitte und ein Projektverzeichnis wie in einer Ausstellung.'],
+      en: ['Gallery', 'Like the websites of art halls: huge serif type, lots of white, numbered sections and a project index like an exhibition list.'],
+      colors: ['#fafaf8', '#111111', '#e5432b', '#dcdcd6'] },
+    { id: 'natur', hero: 'split', projects: 'cards',
+      de: ['Warm & natürlich', 'Sand- und Olivtöne, Serifenschrift, runde Formen. Betont Garten und Landschaft.'],
+      en: ['Warm & natural', 'Sand and olive tones, serif type, rounded shapes. Emphasises gardens and landscape.'],
       colors: ['#f5f1ea', '#5f6f4e', '#b9856a', '#2b2a26'] },
-    { id: 'modern', de: ['Dunkel & kraftvoll', 'Große Bilder über die volle Breite, kräftige Großbuchstaben, Akzent in Orange.'],
-      en: ['Dark & bold', 'Full-width images, strong capitals, orange accent.'],
-      colors: ['#121212', '#1d1d1d', '#e0703f', '#f1f1f1'] },
-    { id: 'hanse', de: ['Hanseatisch & klassisch', 'Backsteinrot und Marineblau, wie die Wismarer Altstadt. Gerahmte Bilder, klassische Schrift.'],
+    { id: 'beton', hero: 'split', projects: 'cards',
+      de: ['Beton & Signal', 'Neo-Brutalismus wie in Projekträumen und Off-Spaces: Betongrau, Raster, dicke Linien, harte Schatten, Signalgelb und Schreibmaschinenschrift.'],
+      en: ['Concrete & signal', 'Neo-brutalism like project spaces: concrete grey, visible grid, thick lines, hard shadows, signal yellow and monospace type.'],
+      colors: ['#e7e5df', '#0d0d0d', '#ffd400', '#f6f5f1'] },
+    { id: 'hanse', hero: 'split-rev', projects: 'cards',
+      de: ['Hanseatisch & klassisch', 'Backsteinrot und Marineblau, wie die Wismarer Altstadt. Gerahmte Bilder, klassische Schrift.'],
       en: ['Hanseatic & classic', 'Brick red and navy, like Wismar’s old town. Framed images, classic type.'],
-      colors: ['#fbf7f0', '#9c3d2c', '#1d2a3a', '#e5ddd0'] }
+      colors: ['#fbf7f0', '#9c3d2c', '#1d2a3a', '#e5ddd0'] },
+    { id: 'magazin', hero: 'editorial', projects: 'editorial',
+      de: ['Magazin', 'Wie ein Feuilleton oder eine Architekturzeitschrift: Titelseite, kursive Serifen, Initialen, Doppellinien und ein großes Titelprojekt.'],
+      en: ['Magazine', 'Like an arts section or architecture magazine: cover page, italic serifs, drop caps, double rules and a large lead project.'],
+      colors: ['#f2ece1', '#1a1714', '#c8361d', '#d6ccbd'] },
+    { id: 'riso', hero: 'overlay', projects: 'tiles',
+      de: ['Riso & Festival', 'Wie Plakate der Club- und Festivalszene im Risografie-Druck: Neonpink, Tintenblau, Gelb, Papierkorn, zweifarbige Fotos und schmale Großbuchstaben.'],
+      en: ['Riso & festival', 'Like risograph posters from the club and festival scene: neon pink, ink blue, yellow, paper grain, two-tone photos and condensed capitals.'],
+      colors: ['#f5efe2', '#1c2072', '#ff4fae', '#ffe14d'] },
+    { id: 'pavillon', hero: 'float', projects: 'cards',
+      de: ['Pavillon', 'Glas und Licht wie in einem Ausstellungspavillon: warme Farbverläufe, Milchglasflächen, weiche Serifenschrift und runde Formen.'],
+      en: ['Pavilion', 'Glass and light like an exhibition pavilion: warm gradients, frosted glass panels, soft serif type and round shapes.'],
+      colors: ['#ffd9c2', '#cfe5e3', '#2f6f73', '#1f2a2e'] }
   ];
   var DESIGNS = VARIANTS.map(function (v) { return v.id; });
 
@@ -37,7 +54,13 @@
     design = load('hs-design');
     if (DESIGNS.indexOf(design) < 0) design = C.design;
   }
-  root.setAttribute('data-design', design);
+  function applyDesign(d) {
+    var v = VARIANTS[DESIGNS.indexOf(d)];
+    root.setAttribute('data-design', d);
+    root.setAttribute('data-hero', v.hero);
+    root.setAttribute('data-projects', v.projects);
+  }
+  applyDesign(design);
 
   // ---------- Sprache ----------
   var lang = params.get('lang') || load('hs-lang') || 'de';
@@ -76,7 +99,7 @@
   function address() { return C.street + ', ' + C.zip + ' ' + C.city; }
 
   window.SiteUtil = { esc: esc, bi: bi, biHtml: biHtml, CATS: CATS, DESIGNS: DESIGNS, VARIANTS: VARIANTS, design: design,
-    setDesign: function (d) { save('hs-design', d); root.setAttribute('data-design', d); } };
+    setDesign: function (d) { save('hs-design', d); applyDesign(d); } };
 
   // ---------- Kopf- und Fußzeile ----------
   var NAV = [
