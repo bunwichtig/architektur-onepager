@@ -147,7 +147,7 @@
 
   // ---------- Einrichtung ----------
   // [Pfad in SITE, Bezeichnung, Hinweis, Prüfung ob noch Platzhalter]
-  function placeholder(v) { return !v || /example|\[|0000/.test(v); }
+  function placeholder(v) { return !v || /example|\[|0000|Vorname|Nachname/.test(v); }
   var SETUP = [
     ['Allgemein', [
       ['name', 'Name', ''],
