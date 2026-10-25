@@ -15,6 +15,7 @@ Reines HTML, CSS und JavaScript ohne Build-Schritt. Es werden keine Schriften od
 | `ueber-mich.html` | Über mich |
 | `kontakt.html` | Kontaktformular, E-Mail-Variante, Karte |
 | `impressum.html`, `datenschutz.html` | Entwürfe, **vor Veröffentlichung rechtlich prüfen lassen** |
+| `bildnachweise.html` | Urheber und Lizenzen aller Fotos |
 | `designs.html` | Vorschau der vier Designvarianten (nicht für Google) |
 | `verwaltung.html` | Testmodus: Projekte hochladen, Anfragen ansehen, Einrichtung (nicht für Google) |
 | `admin/` | Echtes Redaktionssystem (Decap CMS), sobald eingerichtet |
@@ -24,7 +25,8 @@ Reines HTML, CSS und JavaScript ohne Build-Schritt. Es werden keine Schriften od
 - **Einstellungen und Kontaktdaten:** `assets/config.js`. Bequemer geht es über `verwaltung.html` → *Einrichtung*: ausfüllen, `config.js` herunterladen und die Datei im Repository ersetzen.
 - **Projekte:** `content/projects.json`. Bilder liegen in `assets/img/` (Testgrafiken) bzw. `assets/uploads/` (echte Uploads).
 - **Texte:** direkt in den HTML-Dateien, jeweils als Paar `<span lang="de">…</span><span lang="en">…</span>`.
-- **Designs:** `assets/site.css`, oben die Farbwerte je Variante (`html[data-design="…"]`).
+- **Designs:** Liste aller Varianten oben in `assets/site.js` (`VARIANTS`), Farben und Layout in `assets/site.css` (`html[data-design="…"]`). Ein neues Design: einen Eintrag in `VARIANTS` ergänzen und in `site.css` einen eigenen Block anlegen. Es erscheint dann automatisch auf `designs.html`.
+- **Fotos und Bildnachweise:** `assets/img/fotos/` (Beispielfotos von Wikimedia Commons, verkleinert, ohne Metadaten) und `content/credits.json` (Urheber, Lizenz, Quelle je Bild). Steht ein Bild in `credits.json`, zeigt die Seite den Nachweis automatisch am Bild an. Alle Nachweise stehen gesammelt auf `bildnachweise.html`.
 
 ## Lokal ansehen
 
@@ -67,7 +69,7 @@ Danach <http://localhost:8000> öffnen.
 ## Vor der Veröffentlichung
 
 1. Echte Daten in `config.js` (Straße, Telefon, E-Mail, USt-IdNr.), `demo: false` setzen.
-2. Testprojekte in `content/projects.json` durch echte ersetzen, Testgrafiken löschen.
+2. Testprojekte in `content/projects.json` durch echte ersetzen. Die Beispielfotos zeigen keine Projekte von die Inhaberin: löschen und dazu die Einträge in `content/credits.json` entfernen.
 3. Impressum und Datenschutz prüfen lassen.
 4. Hinweis zur Berufsbezeichnung: „Architektin“ ist geschützt und wird nicht verwendet. Bauanträge brauchen je nach Vorhaben eine bauvorlageberechtigte Person.
 
