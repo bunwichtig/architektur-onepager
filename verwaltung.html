@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="de" data-lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Verwaltung (Demo) · Vorname Nachname</title>
+<meta name="title-en" content="Admin (demo) · Vorname Nachname">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/config.js"></script>
+<script src="assets/store.js"></script>
+<script src="assets/site.js"></script>
+<script src="assets/verwaltung.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main"><span lang="de">Zum Inhalt</span><span lang="en">Skip to content</span></a>
+<div id="site-header"></div>
+
+<main id="main">
+  <section class="section">
+    <div class="wrap">
+      <span class="eyebrow"><span lang="de">Verwaltung</span><span lang="en">Admin</span></span>
+      <h1><span lang="de">Verwaltung (Testmodus)</span><span lang="en">Admin (test mode)</span></h1>
+      <p class="notice warn">
+        <span lang="de">Testmodus: Alles, was Sie hier hochladen oder eintragen, bleibt nur in diesem Browser auf diesem Gerät. So lässt sich der Ablauf ohne Zugangsdaten ausprobieren. Für die echte Website gibt es das Redaktionssystem unter <a href="admin/">admin/</a>. Es funktioniert, sobald die Zugangsdaten unter „Einrichtung“ eingetragen sind.</span>
+        <span lang="en">Test mode: everything you upload or enter here stays in this browser on this device. That way you can try the workflow without credentials. For the live site there is the content editor at <a href="admin/">admin/</a>. It works once the credentials are entered under “Setup”.</span>
+      </p>
+
+      <div class="tabs" role="tablist">
+        <button role="tab" aria-selected="true" data-tab="upload"><span lang="de">Projekt hochladen</span><span lang="en">Upload project</span></button>
+        <button role="tab" aria-selected="false" data-tab="anfragen"><span lang="de">Anfragen</span><span lang="en">Requests</span></button>
+        <button role="tab" aria-selected="false" data-tab="setup"><span lang="de">Einrichtung</span><span lang="en">Setup</span></button>
+      </div>
+
+      <!-- Projekt hochladen -->
+      <div data-panel="upload">
+        <div class="contact-grid">
+          <form id="upload-form" class="card">
+            <h2 style="font-size:1.4rem"><span lang="de">Neues Projekt</span><span lang="en">New project</span></h2>
+            <div class="row-2">
+              <div class="field"><label for="u-title-de">Titel (Deutsch) *</label><input id="u-title-de" name="title_de" required></div>
+              <div class="field"><label for="u-title-en">Title (English)</label><input id="u-title-en" name="title_en"></div>
+            </div>
+            <div class="row-2">
+              <div class="field"><label for="u-cat"><span lang="de">Bereich</span><span lang="en">Type</span></label>
+                <select id="u-cat" name="category">
+                  <option value="sanierung">Sanierung / Renovation</option>
+                  <option value="neubau">Neubau / New build</option>
+                  <option value="landschaft">Landschaftsgestaltung / Landscape</option>
+                </select></div>
+              <div class="row-2">
+                <div class="field"><label for="u-loc"><span lang="de">Ort</span><span lang="en">Place</span></label><input id="u-loc" name="location" value="Wismar"></div>
+                <div class="field"><label for="u-year"><span lang="de">Jahr</span><span lang="en">Year</span></label><input id="u-year" name="year" type="number" min="1990" max="2100"></div>
+              </div>
+            </div>
+            <div class="field"><label for="u-sum-de">Kurzbeschreibung (Deutsch) *</label><input id="u-sum-de" name="summary_de" required maxlength="200"></div>
+            <div class="field"><label for="u-sum-en">Short description (English)</label><input id="u-sum-en" name="summary_en" maxlength="200"></div>
+            <div class="field"><label for="u-text-de">Text (Deutsch)</label><textarea id="u-text-de" name="text_de"></textarea></div>
+            <div class="field"><label for="u-text-en">Text (English)</label><textarea id="u-text-en" name="text_en"></textarea></div>
+            <div class="field">
+              <label for="u-img"><span lang="de">Bilder (das erste ist das Titelbild)</span><span lang="en">Images (the first is the cover)</span> *</label>
+              <input id="u-img" name="images" type="file" accept="image/*" multiple required>
+              <p class="hint"><span lang="de">Große Fotos werden automatisch auf 1600 px verkleinert.</span><span lang="en">Large photos are automatically resized to 1600 px.</span></p>
+              <div class="thumbs" id="u-preview"></div>
+            </div>
+            <div class="btn-row"><button class="btn" type="submit"><span lang="de">Projekt speichern</span><span lang="en">Save project</span></button></div>
+            <div id="upload-result" hidden role="status"></div>
+          </form>
+          <div>
+            <h2 style="font-size:1.4rem"><span lang="de">Hochgeladene Testprojekte</span><span lang="en">Uploaded test projects</span></h2>
+            <p class="muted"><span lang="de">Diese Projekte erscheinen in diesem Browser ganz oben auf der Projektseite.</span><span lang="en">These projects appear at the top of the projects page in this browser.</span></p>
+            <div id="local-list"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Anfragen -->
+      <div data-panel="anfragen" hidden>
+        <p class="muted"><span lang="de">Anfragen aus dem Kontaktformular, solange noch kein Formulardienst eingerichtet ist. Später kommen sie per E-Mail an.</span><span lang="en">Requests from the contact form while no form service is set up. Later they arrive by email.</span></p>
+        <div class="btn-row" style="margin:0 0 20px">
+          <button class="btn" type="button" id="inbox-download"><span lang="de">Als Textdatei herunterladen</span><span lang="en">Download as text file</span></button>
+          <button class="btn ghost" type="button" id="inbox-clear"><span lang="de">Alle löschen</span><span lang="en">Delete all</span></button>
+        </div>
+        <div id="inbox"></div>
+      </div>
+
+      <!-- Einrichtung -->
+      <div data-panel="setup" hidden>
+        <p class="muted"><span lang="de">Hier tragen Sie die echten Daten ein. Mit „config.js herunterladen“ erhalten Sie die fertige Datei. Sie ersetzt <code>assets/config.js</code> im Repository. Passwörter gehören nicht hierher: Die Anmeldung läuft über GitHub bzw. den Formulardienst.</span>
+          <span lang="en">Enter the real data here. “Download config.js” gives you the finished file, which replaces <code>assets/config.js</code> in the repository. No passwords belong here: login runs via GitHub or the form service.</span></p>
+        <form id="setup-form" class="card"></form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+</body>
+</html>

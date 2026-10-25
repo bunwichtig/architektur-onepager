@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /verwaltung.html
+Disallow: /designs.html
+
+Sitemap: https://bunwichtig.github.io/architektur-onepager/sitemap.xml

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-label="Testbild: Moderner Neubau">
+<defs><linearGradient id="s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cddde6"/><stop offset="1" stop-color="#eef3f5"/></linearGradient></defs>
+<rect width="1600" height="1000" fill="url(#s)"/>
+<rect y="760" width="1600" height="240" fill="#a9b99a"/>
+<rect x="420" y="380" width="760" height="380" fill="#e9e6e1"/><rect x="481" y="426" width="418" height="190" fill="#5d7380"/><rect x="952" y="426" width="167" height="334" fill="#5d7380" fill-opacity=".8"/><rect x="1310" y="592.0" width="20" height="168.0" fill="#5e4b3a"/><circle cx="1320" cy="568.0" r="120" fill="#5f7a4f"/>
+<g font-family="Arial, Helvetica, sans-serif" fill="#ffffff" fill-opacity=".85">
+<rect x="40" y="40" width="300" height="56" rx="28" fill="#000" fill-opacity=".35"/>
+<text x="190" y="77" font-size="26" text-anchor="middle" letter-spacing="3">TESTBILD</text>
+</g>
+</svg>
