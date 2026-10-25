@@ -120,7 +120,7 @@
       return '<a href="' + n[0] + '"' + (n[0] === page ? ' aria-current="page"' : '') + '>' + bi(n[1], n[2]) + '</a>';
     }).join('');
     var bar = C.demo && !inFrame
-      ? '<div class="demo-bar">' + bi('Demo-Version mit Testdaten · ', 'Demo version with sample data · ') +
+      ? '<div class="demo-bar">' + '<strong>' + bi('Musterseite: kein echtes Unternehmen und kein Angebot. Alle Namen und Daten sind erfunden.', 'Sample website: not a real business and no offer. All names and details are fictitious.') + '</strong> · ' +
         '<a href="designs.html">' + bi('Designvarianten ansehen', 'View design options') + '</a> · ' +
         '<a href="verwaltung.html">' + bi('Verwaltung testen', 'Try the admin area') + '</a></div>'
       : '';
