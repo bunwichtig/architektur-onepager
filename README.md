@@ -1,6 +1,6 @@
 # Vorname Nachname · Bauplanung (Website)
 
-Mehrseitige Website für Vorname Nachname, Bauplanung in Wismar: Sanierung, Neubau, Landschaftsgestaltung für Privatleute. Deutsch und Englisch umschaltbar, vier Designvarianten, Projekte zum Hochladen. **Derzeit Demo mit Testdaten.**
+Mehrseitige Website für Vorname Nachname, Bauplanung in Wismar: Sanierung, Neubau, Landschaftsgestaltung für Privatleute. Deutsch und Englisch umschaltbar, sieben Designvarianten, Projekte zum Hochladen. **Derzeit Demo mit Testdaten.**
 
 Reines HTML, CSS und JavaScript ohne Build-Schritt. Es werden keine Schriften oder Skripte von fremden Servern geladen. Ausnahmen: Google Maps, das erst nach Klick lädt, und das Redaktionssystem unter `admin/`.
 
@@ -16,7 +16,7 @@ Reines HTML, CSS und JavaScript ohne Build-Schritt. Es werden keine Schriften od
 | `kontakt.html` | Kontaktformular, E-Mail-Variante, Karte |
 | `impressum.html`, `datenschutz.html` | Entwürfe, **vor Veröffentlichung rechtlich prüfen lassen** |
 | `bildnachweise.html` | Urheber und Lizenzen aller Fotos |
-| `designs.html` | Vorschau der vier Designvarianten (nicht für Google) |
+| `designs.html` | Vorschau aller Designvarianten (nicht für Google) |
 | `verwaltung.html` | Testmodus: Projekte hochladen, Anfragen ansehen, Einrichtung (nicht für Google) |
 | `admin/` | Echtes Redaktionssystem (Decap CMS), sobald eingerichtet |
 
@@ -25,7 +25,8 @@ Reines HTML, CSS und JavaScript ohne Build-Schritt. Es werden keine Schriften od
 - **Einstellungen und Kontaktdaten:** `assets/config.js`. Bequemer geht es über `verwaltung.html` → *Einrichtung*: ausfüllen, `config.js` herunterladen und die Datei im Repository ersetzen.
 - **Projekte:** `content/projects.json`. Bilder liegen in `assets/img/` (Testgrafiken) bzw. `assets/uploads/` (echte Uploads).
 - **Texte:** direkt in den HTML-Dateien, jeweils als Paar `<span lang="de">…</span><span lang="en">…</span>`.
-- **Designs:** Liste aller Varianten oben in `assets/site.js` (`VARIANTS`), Farben und Layout in `assets/site.css` (`html[data-design="…"]`). Ein neues Design: einen Eintrag in `VARIANTS` ergänzen und in `site.css` einen eigenen Block anlegen. Es erscheint dann automatisch auf `designs.html`.
+- **Designs:** Liste aller Varianten oben in `assets/site.js` (`VARIANTS`). Jede Variante wählt eine Anordnung für das Startbild (`hero`: split, split-rev, stack, overlay, float, editorial) und für die Projekte (`projects`: cards, list, tiles, index, editorial). Farben, Schriften und Details stehen in `assets/site.css` unter `html[data-design="…"]`. Für ein neues Design einen Eintrag in `VARIANTS` und einen Block in `site.css` anlegen. Es erscheint dann automatisch auf `designs.html`.
+- **Schriften:** `assets/fonts/` (Instrument Serif/Sans, Archivo, Fraunces, IBM Plex Mono, Bricolage Grotesque, Newsreader), alle unter SIL Open Font License, Lizenztexte liegen daneben.
 - **Fotos und Bildnachweise:** `assets/img/fotos/` (Beispielfotos von Wikimedia Commons, verkleinert, ohne Metadaten) und `content/credits.json` (Urheber, Lizenz, Quelle je Bild). Steht ein Bild in `credits.json`, zeigt die Seite den Nachweis automatisch am Bild an. Alle Nachweise stehen gesammelt auf `bildnachweise.html`.
 
 ## Lokal ansehen

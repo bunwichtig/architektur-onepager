@@ -41,6 +41,6 @@ window.SITE = {
     authUrl: ''
   },
 
-  // Standard-Design: hell, natur, modern oder hanse
+  // Standard-Design: galerie, natur, beton, hanse, magazin, riso oder pavillon
   design: 'natur'
 };
