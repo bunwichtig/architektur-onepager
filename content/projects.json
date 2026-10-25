@@ -9,9 +9,13 @@
       "year": 2025,
       "summary_de": "Behutsame Sanierung eines denkmalgeschützten Giebelhauses mit neuer Haustechnik und zwei Wohnungen.",
       "summary_en": "Careful renovation of a listed gabled house with new building services and two apartments.",
-      "text_de": "Das Haus aus dem 17. Jahrhundert stand mehrere Jahre leer. Gemeinsam mit den Eigentümern und der Denkmalpflege haben wir ein Konzept entwickelt, das die historische Substanz erhält und das Haus wieder bewohnbar macht.\n\nDas Fachwerk im Inneren wurde freigelegt und ausgebessert, die Fassade mit Kalkmörtel neu verfugt. Eine Wandheizung und Innendämmung aus Holzfaser sorgen für ein angenehmes Raumklima.\n\n(Testtext. Hier steht später die echte Projektbeschreibung.)",
-      "text_en": "The 17th-century house had been empty for several years. Together with the owners and the heritage office we developed a concept that preserves the historic fabric and makes the house liveable again.\n\nThe timber frame inside was exposed and repaired, the façade repointed with lime mortar. Wall heating and wood-fibre interior insulation provide a comfortable indoor climate.\n\n(Sample text. The real project description goes here.)",
-      "images": ["assets/img/sanierung-1.svg", "assets/img/sanierung-2.svg", "assets/img/sanierung-3.svg"]
+      "text_de": "Das Haus aus dem 17. Jahrhundert stand mehrere Jahre leer. Gemeinsam mit den Eigentümern und der Denkmalpflege haben wir ein Konzept entwickelt, das die historische Substanz erhält und das Haus wieder bewohnbar macht.\n\nDas Fachwerk im Inneren wurde freigelegt und ausgebessert, die Fassade mit Kalkmörtel neu verfugt. Eine Wandheizung und Innendämmung aus Holzfaser sorgen für ein angenehmes Raumklima.\n\n(Testtext mit Beispielfotos. Hier stehen später echte Projekte.)",
+      "text_en": "The 17th-century house had been empty for several years. Together with the owners and the heritage office we developed a concept that preserves the historic fabric and makes the house liveable again.\n\nThe timber frame inside was exposed and repaired, the façade repointed with lime mortar. Wall heating and wood-fibre interior insulation provide a comfortable indoor climate.\n\n(Sample text with example photos. Real projects will go here.)",
+      "images": [
+        "assets/img/fotos/wismar-giebel-rot.jpg",
+        "assets/img/fotos/wismar-giebel-alt.jpg",
+        "assets/img/fotos/wismar-giebelreihe.jpg"
+      ]
     },
     {
       "id": "einfamilienhaus-gartenstadt",
@@ -22,9 +26,13 @@
       "year": 2024,
       "summary_de": "Neubau für eine vierköpfige Familie: klare Form, viel Licht, Holzbauweise.",
       "summary_en": "New build for a family of four: a clear shape, lots of light, timber construction.",
-      "text_de": "Die Familie wünschte sich ein Haus, das zur norddeutschen Umgebung passt und trotzdem modern wirkt. Das Ergebnis ist ein schlichter Baukörper mit Satteldach, großen Fenstern nach Süden und einem offenen Wohnbereich.\n\nGebaut wurde in Holzrahmenbauweise. Eine Wärmepumpe und eine Photovoltaikanlage decken den größten Teil des Energiebedarfs.\n\n(Testtext. Hier steht später die echte Projektbeschreibung.)",
-      "text_en": "The family wanted a house that fits the northern German surroundings yet feels modern. The result is a simple volume with a pitched roof, large south-facing windows and an open living area.\n\nThe house is a timber-frame construction. A heat pump and solar panels cover most of the energy demand.\n\n(Sample text. The real project description goes here.)",
-      "images": ["assets/img/neubau-1.svg", "assets/img/neubau-2.svg", "assets/img/neubau-3.svg"]
+      "text_de": "Die Familie wünschte sich ein Haus, das zur norddeutschen Umgebung passt und trotzdem modern wirkt. Das Ergebnis ist ein schlichter Baukörper mit Satteldach, großen Fenstern nach Süden und einem offenen Wohnbereich.\n\nGebaut wurde in Holzrahmenbauweise. Eine Wärmepumpe und eine Photovoltaikanlage decken den größten Teil des Energiebedarfs.\n\n(Testtext mit Beispielfotos. Hier stehen später echte Projekte.)",
+      "text_en": "The family wanted a house that fits the northern German surroundings yet feels modern. The result is a simple volume with a pitched roof, large south-facing windows and an open living area.\n\nThe house is a timber-frame construction. A heat pump and solar panels cover most of the energy demand.\n\n(Sample text with example photos. Real projects will go here.)",
+      "images": [
+        "assets/img/fotos/holzhaus-rot.jpg",
+        "assets/img/fotos/dachstuhl-neu.jpg",
+        "assets/img/fotos/holzhaus-garten.jpg"
+      ]
     },
     {
       "id": "garten-insel-poel",
@@ -35,9 +43,13 @@
       "year": 2025,
       "summary_de": "Neugestaltung eines Grundstücks mit Teich, heimischen Pflanzen und windgeschützter Terrasse.",
       "summary_en": "Redesign of a plot with a pond, native plants and a sheltered terrace.",
-      "text_de": "Das Grundstück liegt nah am Wasser und ist dem Wind stark ausgesetzt. Eine Hecke aus heimischen Gehölzen schafft Schutz, ein Naturteich sammelt das Regenwasser.\n\nWege aus Natursteinplatten verbinden Haus, Terrasse und Gemüsegarten. Die Pflanzen sind robust und brauchen wenig Pflege.\n\n(Testtext. Hier steht später die echte Projektbeschreibung.)",
-      "text_en": "The plot lies close to the water and is very exposed to wind. A hedge of native shrubs provides shelter, a natural pond collects rainwater.\n\nNatural stone paths connect house, terrace and vegetable garden. The plants are hardy and low-maintenance.\n\n(Sample text. The real project description goes here.)",
-      "images": ["assets/img/garten-1.svg", "assets/img/garten-2.svg", "assets/img/garten-3.svg"]
+      "text_de": "Das Grundstück liegt nah am Wasser und ist dem Wind stark ausgesetzt. Eine Hecke aus heimischen Gehölzen schafft Schutz, ein Naturteich sammelt das Regenwasser.\n\nWege aus Natursteinplatten verbinden Haus, Terrasse und Gemüsegarten. Die Pflanzen sind robust und brauchen wenig Pflege.\n\n(Testtext mit Beispielfotos. Hier stehen später echte Projekte.)",
+      "text_en": "The plot lies close to the water and is very exposed to wind. A hedge of native shrubs provides shelter, a natural pond collects rainwater.\n\nNatural stone paths connect house, terrace and vegetable garden. The plants are hardy and low-maintenance.\n\n(Sample text with example photos. Real projects will go here.)",
+      "images": [
+        "assets/img/fotos/garten-wege.jpg",
+        "assets/img/fotos/garten-natur.jpg",
+        "assets/img/fotos/garten-beet.jpg"
+      ]
     },
     {
       "id": "reetdachhaus-kluetz",
@@ -48,9 +60,13 @@
       "year": 2023,
       "summary_de": "Umbau eines alten Bauernhauses zum Wohnhaus, mit neuem Reetdach und ausgebautem Dachgeschoss.",
       "summary_en": "Conversion of an old farmhouse into a home, with a new thatched roof and converted attic.",
-      "text_de": "Das ehemalige Bauernhaus wurde zum Wohnhaus für ein Paar umgebaut. Der Dachstuhl wurde statisch ertüchtigt und das Reetdach komplett erneuert.\n\nIm Dachgeschoss entstanden zwei Schlafzimmer und ein Bad. Die alte Diele ist heute der Mittelpunkt des Hauses.\n\n(Testtext. Hier steht später die echte Projektbeschreibung.)",
-      "text_en": "The former farmhouse was converted into a home for a couple. The roof structure was reinforced and the thatch completely renewed.\n\nThe attic now holds two bedrooms and a bathroom. The old hall is the heart of the house today.\n\n(Sample text. The real project description goes here.)",
-      "images": ["assets/img/reetdach-1.svg", "assets/img/reetdach-2.svg", "assets/img/reetdach-3.svg"]
+      "text_de": "Das ehemalige Bauernhaus wurde zum Wohnhaus für ein Paar umgebaut. Der Dachstuhl wurde statisch ertüchtigt und das Reetdach komplett erneuert.\n\nIm Dachgeschoss entstanden zwei Schlafzimmer und ein Bad. Die alte Diele ist heute der Mittelpunkt des Hauses.\n\n(Testtext mit Beispielfotos. Hier stehen später echte Projekte.)",
+      "text_en": "The former farmhouse was converted into a home for a couple. The roof structure was reinforced and the thatch completely renewed.\n\nThe attic now holds two bedrooms and a bathroom. The old hall is the heart of the house today.\n\n(Sample text with example photos. Real projects will go here.)",
+      "images": [
+        "assets/img/fotos/reetdach-ostsee.jpg",
+        "assets/img/fotos/reetdach-fachwerk.jpg",
+        "assets/img/fotos/reetdach-gaube.jpg"
+      ]
     },
     {
       "id": "stadthaus-kubus",
@@ -61,9 +77,12 @@
       "year": 2026,
       "summary_de": "Kompakter Neubau auf einem schmalen Grundstück, barrierefrei geplant.",
       "summary_en": "Compact new build on a narrow plot, designed to be step-free.",
-      "text_de": "Auf einem schmalen Grundstück zwischen zwei Bestandsgebäuden entstand ein kompaktes Stadthaus. Alle Räume im Erdgeschoss sind stufenlos erreichbar, ein späterer Einbau eines Aufzugs ist vorbereitet.\n\nDas begrünte Flachdach hält Regenwasser zurück und verbessert das Kleinklima.\n\n(Testtext. Hier steht später die echte Projektbeschreibung.)",
-      "text_en": "A compact town house was built on a narrow plot between two existing buildings. All ground-floor rooms are step-free, and a lift can be added later.\n\nThe green flat roof retains rainwater and improves the microclimate.\n\n(Sample text. The real project description goes here.)",
-      "images": ["assets/img/kubus-1.svg", "assets/img/kubus-2.svg"]
+      "text_de": "Auf einem schmalen Grundstück zwischen zwei Bestandsgebäuden entstand ein kompaktes Stadthaus. Alle Räume im Erdgeschoss sind stufenlos erreichbar, ein späterer Einbau eines Aufzugs ist vorbereitet.\n\nDas begrünte Flachdach hält Regenwasser zurück und verbessert das Kleinklima.\n\n(Testtext mit Beispielfotos. Hier stehen später echte Projekte.)",
+      "text_en": "A compact town house was built on a narrow plot between two existing buildings. All ground-floor rooms are step-free, and a lift can be added later.\n\nThe green flat roof retains rainwater and improves the microclimate.\n\n(Sample text with example photos. Real projects will go here.)",
+      "images": [
+        "assets/img/fotos/modern-hang.jpg",
+        "assets/img/fotos/modern-flach.jpg"
+      ]
     }
   ]
 }

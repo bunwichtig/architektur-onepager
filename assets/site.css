@@ -418,3 +418,25 @@ th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--lin
 .status.todo { background: #fff3c4; color: #4a3d00; }
 .config-row { display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: end; }
 .hint { font-size: .82rem; color: var(--muted); margin-top: 4px; }
+
+/* ---------- Bildnachweise ---------- */
+.credited { position: relative; display: block; }
+.credit {
+  position: absolute; right: 8px; bottom: 8px; z-index: 2;
+  max-width: calc(100% - 16px);
+  background: rgba(0, 0, 0, .58); color: #fff;
+  font: 500 11px/1.35 var(--sans); letter-spacing: 0; text-transform: none;
+  padding: 3px 8px; border-radius: 4px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.credit a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
+.credit a:hover { color: #fff; opacity: .85; }
+.project .credit { top: 8px; bottom: auto; }
+html[data-design="modern"] .hero-media .credited { height: 100%; }
+html[data-design="modern"] .hero-media .credit { bottom: 12px; }
+html[data-design="hell"] .project .credited { width: min(320px, 38%); flex: none; }
+html[data-design="hell"] .project .credited img { width: 100%; }
+@media (max-width: 620px) { html[data-design="hell"] .project .credited { width: 100%; } }
+.credit-list { list-style: none; padding: 0; margin: -24px 0 36px; font-size: .82rem; color: var(--muted); }
+.credit-list li { margin-bottom: 2px; }
+.credits-table img { width: 120px; height: 80px; object-fit: cover; border-radius: 4px; }
