@@ -155,7 +155,7 @@
       ['business.en', 'Tätigkeit (Englisch)', ''],
       ['siteUrl', 'Adresse der Website', 'Später die eigene Domain, z. B. https://www.henrike-scholze.de/. Dann auch die Adressen in sitemap.xml, robots.txt und den HTML-Köpfen ersetzen.',
         function (v) { return /github\.io/.test(v); }],
-      ['design', 'Design für alle Besucher', 'hell, natur, modern oder hanse (siehe Designvarianten)', function () { return false; }],
+      ['design', 'Design für alle Besucher', 'galerie, natur, beton, hanse, magazin, riso oder pavillon (siehe Designvarianten)', function () { return false; }],
       ['demo', 'Demo-Modus', 'Auf „false“ setzen, wenn die Seite online geht. Dann verschwinden der gelbe Hinweis und die Demo-Links.', function (v) { return v !== 'false'; }]
     ]],
     ['Kontakt & Impressum', [
