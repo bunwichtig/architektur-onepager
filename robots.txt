@@ -1,3 +1,6 @@
+# Demo-Phase: Alle Seiten tragen <meta name="robots" content="noindex">.
+# Hier bewusst nichts sperren, sonst sieht Google diesen Hinweis nicht.
+
 User-agent: *
 Allow: /
 Disallow: /admin/

@@ -71,8 +71,9 @@ Danach <http://localhost:8000> öffnen.
 
 1. Echte Daten in `config.js` (Straße, Telefon, E-Mail, USt-IdNr.), `demo: false` setzen.
 2. Testprojekte in `content/projects.json` durch echte ersetzen. Die Beispielfotos zeigen keine Projekte von Frau Scholze: löschen und dazu die Einträge in `content/credits.json` entfernen.
-3. Impressum und Datenschutz prüfen lassen.
-4. Hinweis zur Berufsbezeichnung: „Architektin“ ist geschützt und wird nicht verwendet. Bauanträge brauchen je nach Vorhaben eine bauvorlageberechtigte Person.
+3. Impressum und Datenschutz prüfen lassen, Platzhalter in eckigen Klammern ersetzen.
+4. In allen HTML-Dateien die Zeile `<meta name="robots" content="noindex, nofollow">` unter dem Kommentar „DEMO“ entfernen, damit Google die Seite aufnimmt.
+5. Hinweis zur Berufsbezeichnung: „Architektin“ ist geschützt und wird nicht verwendet. Bauanträge brauchen je nach Vorhaben eine bauvorlageberechtigte Person.
 
 ## Veröffentlichen
 
