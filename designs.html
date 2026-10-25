@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="de" data-lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Designvarianten · Henrike Scholze</title>
+<meta name="title-en" content="Design options · Henrike Scholze">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/config.js"></script>
+<script src="assets/store.js"></script>
+<script src="assets/site.js"></script>
+</head>
+<body>
+<a class="skip" href="#main"><span lang="de">Zum Inhalt</span><span lang="en">Skip to content</span></a>
+<div id="site-header"></div>
+
+<main id="main">
+  <section class="section">
+    <div class="wrap">
+      <span class="eyebrow"><span lang="de">Vorschau</span><span lang="en">Preview</span></span>
+      <h1><span lang="de">Designvarianten</span><span lang="en">Design options</span></h1>
+      <p class="lead">
+        <span lang="de">Dieselben Inhalte in vier Gestaltungen. Die Varianten unterscheiden sich nicht nur in Farben und Schriften, sondern auch darin, wie Startbild und Projekte dargestellt werden. Klicken Sie auf „Ganze Seite ansehen“ und klicken Sie sich durch alle Unterseiten.</span>
+        <span lang="en">The same content in four designs. They differ not only in colours and fonts but also in how the opening image and projects are shown. Click “View full site” and browse all pages.</span>
+      </p>
+      <p class="notice">
+        <span lang="de">Ihre Auswahl gilt zunächst nur in diesem Browser. Für alle Besucher wird das Design in der Verwaltung unter „Einrichtung“ festgelegt.</span>
+        <span lang="en">Your choice applies only in this browser for now. For all visitors the design is set under “Setup” in the admin area.</span>
+      </p>
+      <div class="variants" id="variants" style="margin-top:32px"></div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+
+<script>
+  var VARIANTS = [
+    { id: 'hell', de: ['Hell & reduziert', 'Viel Weißraum, schlanke Schrift, Projekte als ruhige Liste. Zeitlos und sachlich.'],
+      en: ['Light & minimal', 'Lots of white space, light type, projects as a calm list. Timeless and factual.'],
+      colors: ['#ffffff', '#141414', '#9a9a9a', '#e6e6e6'] },
+    { id: 'natur', de: ['Warm & natürlich', 'Sand- und Olivtöne, Serifenschrift, runde Formen. Betont Garten und Landschaft. Meine Empfehlung.'],
+      en: ['Warm & natural', 'Sand and olive tones, serif type, rounded shapes. Emphasises gardens and landscape. My recommendation.'],
+      colors: ['#f5f1ea', '#5f6f4e', '#b9856a', '#2b2a26'] },
+    { id: 'modern', de: ['Dunkel & kraftvoll', 'Große Bilder über die volle Breite, kräftige Großbuchstaben, Akzent in Orange.'],
+      en: ['Dark & bold', 'Full-width images, strong capitals, orange accent.'],
+      colors: ['#121212', '#1d1d1d', '#e0703f', '#f1f1f1'] },
+    { id: 'hanse', de: ['Hanseatisch & klassisch', 'Backsteinrot und Marineblau, wie die Wismarer Altstadt. Gerahmte Bilder, klassische Schrift.'],
+      en: ['Hanseatic & classic', 'Brick red and navy, like Wismar’s old town. Framed images, classic type.'],
+      colors: ['#fbf7f0', '#9c3d2c', '#1d2a3a', '#e5ddd0'] }
+  ];
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var bi = SiteUtil.bi, box = document.getElementById('variants');
+    box.innerHTML = VARIANTS.map(function (v, i) {
+      return '<article class="variant" data-id="' + v.id + '">' +
+        '<div class="frame"><iframe title="' + v.de[0] + '" src="index.html?design=' + v.id + '" loading="lazy" tabindex="-1"></iframe></div>' +
+        '<div class="info"><h3>' + (i + 1) + '. ' + bi(v.de[0], v.en[0]) + '</h3>' +
+        '<p class="muted" style="margin:0">' + bi(v.de[1], v.en[1]) + '</p>' +
+        '<div class="swatches">' + v.colors.map(function (c) { return '<i style="background:' + c + '"></i>'; }).join('') + '</div>' +
+        '<div class="btn-row" style="margin-top:0">' +
+        '<a class="btn ghost" href="index.html?design=' + v.id + '">' + bi('Ganze Seite ansehen', 'View full site') + '</a>' +
+        '<button class="btn" type="button" data-pick="' + v.id + '">' + bi('Dieses Design wählen', 'Choose this design') + '</button>' +
+        '</div></div></article>';
+    }).join('');
+
+    function mark() {
+      var cur = document.documentElement.getAttribute('data-design');
+      box.querySelectorAll('.variant').forEach(function (el) { el.classList.toggle('chosen', el.dataset.id === cur); });
+    }
+    box.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-pick]');
+      if (!b) return;
+      SiteUtil.setDesign(b.dataset.pick);
+      mark();
+    });
+    mark();
+
+    // Vorschau auf Kartenbreite verkleinern (die Seite wird mit 1280 px gerendert)
+    function fit() {
+      box.querySelectorAll('.frame').forEach(function (f) {
+        f.querySelector('iframe').style.transform = 'scale(' + (f.clientWidth / 1280) + ')';
+      });
+    }
+    fit();
+    window.addEventListener('resize', fit);
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-label="Testbild: Reetdachhaus">
+<defs><linearGradient id="s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dbe4e8"/><stop offset="1" stop-color="#f2f4f1"/></linearGradient></defs>
+<rect width="1600" height="1000" fill="url(#s)"/>
+<rect y="760" width="1600" height="240" fill="#9aaa7e"/>
+<rect x="420" y="500" width="760" height="260" fill="#f2ede4"/><path d="M360,530 Q800.0,180.8 1240,530 Z" fill="#9b8458"/><rect x="495" y="570" width="110" height="90" fill="#4d5a62"/><rect x="655" y="570" width="110" height="90" fill="#4d5a62"/><rect x="815" y="570" width="110" height="90" fill="#4d5a62"/><rect x="975" y="570" width="110" height="90" fill="#4d5a62"/><rect x="1340" y="592.0" width="20" height="168.0" fill="#5e4b3a"/><circle cx="1350" cy="568.0" r="120" fill="#5f7a4f"/>
+<g font-family="Arial, Helvetica, sans-serif" fill="#ffffff" fill-opacity=".85">
+<rect x="40" y="40" width="300" height="56" rx="28" fill="#000" fill-opacity=".35"/>
+<text x="190" y="77" font-size="26" text-anchor="middle" letter-spacing="3">TESTBILD</text>
+</g>
+</svg>
