@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="de" data-lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bildnachweise · Vorname Nachname</title>
+<meta name="title-en" content="Image credits · Vorname Nachname">
+<meta name="description" content="Bildnachweise und Lizenzen der Fotos auf der Website von Vorname Nachname.">
+<link rel="canonical" href="https://bunwichtig.github.io/architektur-onepager/bildnachweise.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:title" content="Bildnachweise · Vorname Nachname">
+<meta property="og:description" content="Bildnachweise und Lizenzen der Fotos auf der Website von Vorname Nachname.">
+<meta property="og:image" content="https://bunwichtig.github.io/architektur-onepager/assets/img/fotos/wismar-hafen.jpg">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/config.js"></script>
+<script src="assets/store.js"></script>
+<script src="assets/site.js"></script>
+</head>
+<body>
+<a class="skip" href="#main"><span lang="de">Zum Inhalt</span><span lang="en">Skip to content</span></a>
+<div id="site-header"></div>
+
+<main id="main">
+  <section class="section">
+    <div class="wrap">
+      <span class="eyebrow"><span lang="de">Rechtliches</span><span lang="en">Legal</span></span>
+      <h1><span lang="de">Bildnachweise</span><span lang="en">Image credits</span></h1>
+      <p class="lead">
+        <span lang="de">Die Fotos auf dieser Demo-Website sind Beispielbilder von Wikimedia Commons. Sie zeigen keine Projekte von Vorname Nachname. Sie stehen unter den genannten Creative-Commons-Lizenzen und wurden für die Website verkleinert und zugeschnitten.</span>
+        <span lang="en">The photos on this demo website are examples from Wikimedia Commons. They do not show projects by Vorname Nachname. They are licensed under the Creative Commons licences listed and were resized and cropped for the website.</span>
+      </p>
+      <div style="overflow-x:auto;margin-top:28px">
+        <table class="credits-table">
+          <thead><tr>
+            <th><span lang="de">Bild</span><span lang="en">Image</span></th>
+            <th><span lang="de">Motiv</span><span lang="en">Subject</span></th>
+            <th><span lang="de">Urheber</span><span lang="en">Author</span></th>
+            <th><span lang="de">Lizenz</span><span lang="en">Licence</span></th>
+            <th><span lang="de">Quelle</span><span lang="en">Source</span></th>
+          </tr></thead>
+          <tbody id="credits"></tbody>
+        </table>
+      </div>
+      <p class="muted" style="margin-top:24px"><span lang="de">Grafiken ohne Nachweis (z. B. Porträt-Platzhalter, Symbole) sind eigene Arbeiten.</span><span lang="en">Graphics without credit (e.g. the portrait placeholder, icons) are our own work.</span></p>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var U = SiteUtil, esc = U.esc;
+    U.credits().then(function (c) {
+      var a = function (href, text) { return href ? '<a href="' + esc(href) + '" target="_blank" rel="noopener">' + esc(text) + '</a>' : esc(text); };
+      document.getElementById('credits').innerHTML = Object.keys(c).map(function (src) {
+        var x = c[src];
+        return '<tr><td><img src="' + esc(src) + '" alt="' + esc(x.alt) + '" loading="lazy" data-credited="1"></td><td>' + esc(x.alt) +
+          '<br><span class="muted">' + esc(x.title) + '</span></td><td>' + a(x.authorUrl, x.author) + '</td><td>' + a(x.licenseUrl, x.license) +
+          '</td><td>' + a(x.source, 'Wikimedia Commons') + '</td></tr>';
+      }).join('');
+    });
+  });
+</script>
+</body>
+</html>

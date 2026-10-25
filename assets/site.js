@@ -1,6 +1,6 @@
 /*
  * Gemeinsames Skript aller Seiten: Design, Sprache, Kopf- und Fußzeile,
- * Kontaktdaten, Karte, Kontaktformular und Projekte.
+ * Kontaktdaten, Karte, Kontaktformular, Projekte und Bildnachweise.
  * Wird im <head> geladen, damit Design und Sprache ohne Flackern stehen.
  */
 (function () {
@@ -8,7 +8,23 @@
   var root = document.documentElement;
   var params = new URLSearchParams(location.search);
   var inFrame = window.self !== window.top;
-  var DESIGNS = ['hell', 'natur', 'modern', 'hanse'];
+  // Alle Designvarianten. Neues Design: hier eintragen und in site.css
+  // einen Block html[data-design="…"] mit den Farben anlegen.
+  var VARIANTS = [
+    { id: 'hell', de: ['Hell & reduziert', 'Viel Weißraum, schlanke Schrift, Projekte als ruhige Liste. Zeitlos und sachlich.'],
+      en: ['Light & minimal', 'Lots of white space, light type, projects as a calm list. Timeless and factual.'],
+      colors: ['#ffffff', '#141414', '#9a9a9a', '#e6e6e6'] },
+    { id: 'natur', de: ['Warm & natürlich', 'Sand- und Olivtöne, Serifenschrift, runde Formen. Betont Garten und Landschaft. Meine Empfehlung.'],
+      en: ['Warm & natural', 'Sand and olive tones, serif type, rounded shapes. Emphasises gardens and landscape. My recommendation.'],
+      colors: ['#f5f1ea', '#5f6f4e', '#b9856a', '#2b2a26'] },
+    { id: 'modern', de: ['Dunkel & kraftvoll', 'Große Bilder über die volle Breite, kräftige Großbuchstaben, Akzent in Orange.'],
+      en: ['Dark & bold', 'Full-width images, strong capitals, orange accent.'],
+      colors: ['#121212', '#1d1d1d', '#e0703f', '#f1f1f1'] },
+    { id: 'hanse', de: ['Hanseatisch & klassisch', 'Backsteinrot und Marineblau, wie die Wismarer Altstadt. Gerahmte Bilder, klassische Schrift.'],
+      en: ['Hanseatic & classic', 'Brick red and navy, like Wismar’s old town. Framed images, classic type.'],
+      colors: ['#fbf7f0', '#9c3d2c', '#1d2a3a', '#e5ddd0'] }
+  ];
+  var DESIGNS = VARIANTS.map(function (v) { return v.id; });
 
   function load(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
   function save(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
@@ -59,7 +75,7 @@
   };
   function address() { return C.street + ', ' + C.zip + ' ' + C.city; }
 
-  window.SiteUtil = { esc: esc, bi: bi, biHtml: biHtml, CATS: CATS, DESIGNS: DESIGNS, design: design,
+  window.SiteUtil = { esc: esc, bi: bi, biHtml: biHtml, CATS: CATS, DESIGNS: DESIGNS, VARIANTS: VARIANTS, design: design,
     setDesign: function (d) { save('hs-design', d); root.setAttribute('data-design', d); } };
 
   // ---------- Kopf- und Fußzeile ----------
@@ -118,6 +134,7 @@
       '<div><strong>' + bi('Rechtliches', 'Legal') + '</strong><ul>' +
       '<li><a href="impressum.html">' + bi('Impressum', 'Legal notice') + '</a></li>' +
       '<li><a href="datenschutz.html">' + bi('Datenschutz', 'Privacy') + '</a></li>' +
+      '<li><a href="bildnachweise.html">' + bi('Bildnachweise', 'Image credits') + '</a></li>' +
       (C.demo ? '<li><a href="designs.html">' + bi('Designvarianten', 'Design options') + '</a></li>' +
                 '<li><a href="verwaltung.html">' + bi('Verwaltung (Demo)', 'Admin (demo)') + '</a></li>' : '') +
       '</ul></div>' +
@@ -205,13 +222,45 @@
     });
   }
 
+  // ---------- Bildnachweise ----------
+  // content/credits.json: Bildpfad → Urheber, Lizenz, Quelle
+  var CRED = {};
+  var creditsReady = fetch('content/credits.json')
+    .then(function (r) { return r.ok ? r.json() : {}; })
+    .catch(function () { return {}; })
+    .then(function (d) { CRED = d; return d; });
+  window.SiteUtil.credits = function () { return creditsReady; };
+
+  function creditHtml(c, links) {
+    var a = function (href, text) { return links && href ? '<a href="' + esc(href) + '" target="_blank" rel="noopener">' + esc(text) + '</a>' : esc(text); };
+    return bi('Foto: ', 'Photo: ') + a(c.source, c.author) + ' · ' + a(c.licenseUrl, c.license);
+  }
+  window.SiteUtil.creditHtml = creditHtml;
+
+  // Hinweis direkt auf das Bild legen. In Links/Knöpfen ohne eigene Links,
+  // dort stehen die vollständigen Angaben auf der Projektseite und unter Bildnachweise.
+  function decorate(scope) {
+    scope.querySelectorAll('img').forEach(function (img) {
+      var c = CRED[img.getAttribute('src')];
+      if (!c || img.dataset.credited || img.closest('.gallery')) return;
+      img.dataset.credited = '1';
+      if (!img.alt) img.alt = c.alt;
+      var inLink = !!img.closest('a, button');
+      var w = document.createElement('span');
+      w.className = 'credited';
+      img.parentNode.insertBefore(w, img);
+      w.appendChild(img);
+      w.insertAdjacentHTML('beforeend', '<span class="credit">' + creditHtml(c, !inLink) + '</span>');
+    });
+  }
+
   // ---------- Projekte ----------
   function loadProjects() {
     var base = fetch('content/projects.json', { cache: 'no-cache' })
       .then(function (r) { return r.json(); })
       .then(function (d) { return d.projects || []; });
     var local = window.DemoStore ? DemoStore.all() : Promise.resolve([]);
-    return Promise.all([base, local]).then(function (res) {
+    return Promise.all([base, local, creditsReady]).then(function (res) {
       var mine = res[1].map(function (p) {
         p.images = (p.imageBlobs || []).map(function (b) { return URL.createObjectURL(b); });
         return p;
@@ -223,7 +272,7 @@
 
   function card(p) {
     var cat = CATS[p.category] || [p.category, p.category];
-    var img = p.images && p.images[0] ? p.images[0] : 'assets/img/hero.svg';
+    var img = p.images && p.images[0] ? p.images[0] : 'assets/img/fotos/wismar-hafen.jpg';
     return '<a class="project" href="projekt.html?id=' + encodeURIComponent(p.id) + '" data-cat="' + esc(p.category) + '">' +
       '<img src="' + esc(img) + '" alt="" loading="lazy">' +
       '<div class="body"><span class="meta">' + bi(cat[0], cat[1]) + ' · ' + esc(p.location) + ' · ' + esc(p.year) +
@@ -244,6 +293,7 @@
     loadProjects().then(function (list) {
       if (limit) list = list.slice(0, limit);
       el.innerHTML = list.map(card).join('');
+      decorate(el);
       var filters = document.getElementById('filters');
       if (!filters) return;
       filters.addEventListener('click', function (e) {
@@ -255,6 +305,13 @@
         });
       });
     }).catch(function () { loadError(el); });
+  }
+
+  function galleryCredits(images) {
+    var items = images.map(function (src, n) {
+      return CRED[src] ? '<li>' + bi('Bild ', 'Image ') + (n + 1) + ': ' + creditHtml(CRED[src], true) + '</li>' : '';
+    }).join('');
+    return items ? '<ul class="credit-list">' + items + '</ul>' : '';
   }
 
   function projectDetail() {
@@ -284,8 +341,10 @@
         '<div><dt>' + bi('Jahr', 'Year') + '</dt><dd>' + esc(p.year) + '</dd></div>' +
         '<div><dt>' + bi('Bereich', 'Type') + '</dt><dd>' + bi(cat[0], cat[1]) + '</dd></div></dl></div>' +
         '<div class="gallery">' + (p.images || []).map(function (src, n) {
-          return '<button type="button" data-src="' + esc(src) + '" aria-label="' + (lang === 'en' ? 'Enlarge image ' : 'Bild vergrößern ') + (n + 1) + '"><img src="' + esc(src) + '" alt=""></button>';
+          var alt = CRED[src] ? CRED[src].alt : '';
+          return '<button type="button" data-src="' + esc(src) + '" aria-label="' + (lang === 'en' ? 'Enlarge image ' : 'Bild vergrößern ') + (n + 1) + '"><img src="' + esc(src) + '" alt="' + esc(alt) + '"></button>';
         }).join('') + '</div>' +
+        galleryCredits(p.images || []) +
         '<div class="prose"><div lang="de">' + paras(p.text_de) + '</div><div lang="en">' + paras(p.text_en || p.text_de) + '</div></div>' +
         '<nav class="pager"><a href="projekt.html?id=' + encodeURIComponent(prev.id) + '">← ' + bi(prev.title_de, prev.title_en) + '</a>' +
         '<a href="projekt.html?id=' + encodeURIComponent(next.id) + '">' + bi(next.title_de, next.title_en) + ' →</a></nav>' +
@@ -310,5 +369,6 @@
     contactForm();
     projectList();
     projectDetail();
+    creditsReady.then(function () { decorate(document.getElementById('main') || document.body); });
   });
 })();
