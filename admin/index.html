@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Redaktion · Vorname Nachname</title>
+<!--
+  Redaktionssystem (Decap CMS) für die Projekte.
+  Projekte werden in content/projects.json gespeichert, Bilder in assets/uploads/.
+  Die Einstellungen (Repository, Anmeldedienst) kommen aus assets/config.js.
+  Lokal testen ohne Anmeldung: im Projektordner `npx decap-server` starten
+  und die Seite über einen lokalen Webserver öffnen (siehe README).
+-->
+<script src="../assets/config.js"></script>
+<script>window.CMS_MANUAL_INIT = true;</script>
+<script src="https://unpkg.com/decap-cms@3.16.3/dist/decap-cms.js"></script>
+</head>
+<body>
+<script>
+  var C = window.SITE;
+  var backend = { name: 'github', repo: C.cms.repo, branch: C.cms.branch };
+  if (C.cms.authUrl) backend.base_url = C.cms.authUrl;
+
+  var text = function (name, label, extra) { return Object.assign({ name: name, label: label, widget: 'string' }, extra || {}); };
+
+  CMS.init({
+    config: {
+      load_config_file: false,
+      backend: backend,
+      local_backend: true,
+      locale: 'de',
+      site_url: C.siteUrl,
+      display_url: C.siteUrl,
+      media_folder: 'assets/uploads',
+      public_folder: 'assets/uploads',
+      collections: [{
+        name: 'inhalte',
+        label: 'Inhalte',
+        files: [{
+          name: 'projekte',
+          label: 'Projekte',
+          file: 'content/projects.json',
+          fields: [{
+            name: 'projects',
+            label: 'Projekte',
+            label_singular: 'Projekt',
+            widget: 'list',
+            summary: '{{fields.title_de}} ({{fields.year}})',
+            fields: [
+              text('id', 'Kurzname für die Adresse', { hint: 'Nur Kleinbuchstaben und Bindestriche, z. B. giebelhaus-altstadt' }),
+              { name: 'category', label: 'Bereich', widget: 'select', options: [
+                { label: 'Sanierung', value: 'sanierung' },
+                { label: 'Neubau', value: 'neubau' },
+                { label: 'Landschaftsgestaltung', value: 'landschaft' }
+              ] },
+              text('title_de', 'Titel (Deutsch)'),
+              text('title_en', 'Titel (Englisch)', { required: false }),
+              text('location', 'Ort'),
+              { name: 'year', label: 'Jahr', widget: 'number', value_type: 'int' },
+              text('summary_de', 'Kurzbeschreibung (Deutsch)'),
+              text('summary_en', 'Kurzbeschreibung (Englisch)', { required: false }),
+              { name: 'text_de', label: 'Text (Deutsch)', widget: 'text' },
+              { name: 'text_en', label: 'Text (Englisch)', widget: 'text', required: false },
+              { name: 'images', label: 'Bilder', label_singular: 'Bild', widget: 'list', hint: 'Das erste Bild ist das Titelbild.',
+                field: { name: 'image', label: 'Bild', widget: 'image' } }
+            ]
+          }]
+        }]
+      }]
+    }
+  });
+</script>
+</body>
+</html>
